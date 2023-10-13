@@ -16,9 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from alunos.views import AlunoAPIView
 
 urlpatterns = [
+    path('', include('alunos.urls')),
     path('api/v1/', include('alunos.urls')),
     path('admin/', admin.site.urls),
     path('auth/', include('rest_framework.urls')),
