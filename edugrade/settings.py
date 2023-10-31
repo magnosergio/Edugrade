@@ -24,10 +24,16 @@ SECRET_KEY = 'django-insecure-y5-wkgyy@te_o*%tg0=ckui41h-&v!8dmi+d38gaj46u3ee0=_
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+"""
 CSRF_TRUSTED_ORIGINS = ['https://localhost:8000']
 ALLOWED_HOSTS = ['localhost']
 CORS_ORIGIN_WHITELIST = ['https://localhost:80000']
+"""
+
+ALLOWED_HOSTS = ['*']
+
+CORS_ALLOWED_ORIGINS = ['https://fluffy-cod-5r5qpxj4q96fw5r-3002.app.github.dev',
+                        'https://magnosergio.github.io']
 
 # Application definition
 
@@ -41,6 +47,7 @@ INSTALLED_APPS = [
 
     'django_filters',
     'rest_framework',
+    'corsheaders',
 
     'alunos',
 ]
@@ -53,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'edugrade.urls'
@@ -79,7 +87,7 @@ WSGI_APPLICATION = 'edugrade.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-""" DATABASES = {
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'edugrade',
@@ -88,14 +96,14 @@ WSGI_APPLICATION = 'edugrade.wsgi.application'
         'HOST': 'localhost',
         'PORT': '3306',
     }
-} """
-
+}
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
-}
+}"""
 
 
 # Password validation
